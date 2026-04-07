@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:fluttersample1/widgetss/animatedtext.dart';
-import 'package:fluttersample1/widgetss/textex.dart';
+import 'package:fluttersample1/widgetss/listView/listCustom.dart';
+import 'package:fluttersample1/widgetss/listView/listView.dart';
+import 'package:fluttersample1/widgetss/listView/listViewBuld.dart';
+import 'package:fluttersample1/widgetss/listView/listViewSep.dart';
+import 'package:fluttersample1/widgetss/row.dart';
+import 'package:fluttersample1/widgetss/rowWithExp.dart';
 
-import 'FirstPage.dart';
 
 void main() =>
     runApp(MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: AnimatedTextWidget()));
+        home: ListViewFour()));
 

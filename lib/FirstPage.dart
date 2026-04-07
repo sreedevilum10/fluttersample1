@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:fluttersample1/LoginPage.dart';
 
 class FirstPage extends StatefulWidget {
+  const FirstPage({super.key});
+
   @override
   State<FirstPage> createState() => _FirstPageState();
 }
