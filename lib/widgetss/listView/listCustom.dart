@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ListViewFour extends StatelessWidget {
+
+  var names = ["Anu","Bindu","Ciya","Dennis"];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,12 +12,12 @@ class ListViewFour extends StatelessWidget {
             color: Colors.green,
             child: ListTile(
               leading: Icon(Icons.person),
-              title: Text("Name $index"),
+              title: Text(names[index]),
               subtitle: Text("876543232456"),
               trailing: Icon(Icons.phone),
             ),
           );
-        }, childCount: 10),
+        }, childCount: 4),
 
         // childrenDelegate: SliverChildListDelegate(
         //   List.generate(
