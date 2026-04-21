@@ -1,19 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:fluttersample1/pages/loginpageValidation.dart';
-import 'package:fluttersample1/pages/regPageValidation.dart';
-import 'package:fluttersample1/widgetss/listView/listCustom.dart';
-import 'package:fluttersample1/widgetss/listView/listView.dart';
-import 'package:fluttersample1/widgetss/listView/listViewBuld.dart';
-import 'package:fluttersample1/widgetss/listView/listViewSep.dart';
-import 'package:fluttersample1/widgetss/module6-io%20and%20radio%20slider%20etc.dart';
-import 'package:fluttersample1/widgetss/row.dart';
-import 'package:fluttersample1/widgetss/rowWithExp.dart';
+import 'Widgetspart2/screens/product/detail.dart';
+import 'Widgetspart2/screens/product/mainScreen.dart';
 
-import 'Widgetspart2/screens/MainScreen.dart';
 
 // void main() =>
 //     runApp(MaterialApp(
 //         debugShowCheckedModeBanner: false,
 //         home: ListViewFour()));
 
-void main() => runApp(MyApp());
+void main() => runApp(ProductMyApp());
+
+class ProductMyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "Ecommerce UI",
+      theme: ThemeData(primarySwatch: Colors.deepPurple),
+      home: MainPage(),
+      routes: {
+        '/details': (context) => ProductDetailsPage()
+      },
+    );
+  }
+}

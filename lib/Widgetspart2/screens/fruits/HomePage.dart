@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../model/fruitsModel.dart';
+import '../../model/fruitmodel/fruitsModel.dart';
 
 class Homepage extends StatelessWidget {
 

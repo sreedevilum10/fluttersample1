@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../model/fruitsModel.dart';
+import '../../model/fruitmodel/fruitsModel.dart';
 
 // ================= DETAILS PAGE =================
 class Detailspage extends StatelessWidget {
