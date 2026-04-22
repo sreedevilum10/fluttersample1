@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   custom_clippers: ^2.0.4
   intl: ^0.20.2
+  awesome_dialog: ^3.3.0
 
 
 dev_dependencies:
