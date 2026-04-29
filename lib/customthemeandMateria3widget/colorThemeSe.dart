@@ -33,7 +33,14 @@ class HomePage extends StatelessWidget {
     final colors = Theme.of(context).colorScheme;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Theme Example", style: Apptextstyle.titleText),
+        title: Text(
+          "Theme Example",
+          style: Theme.of(context)
+              .textTheme.headlineLarge?.copyWith(
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Great Vibes',
+          ),
+        ),
       ),
       body: Center(
         child: Column(

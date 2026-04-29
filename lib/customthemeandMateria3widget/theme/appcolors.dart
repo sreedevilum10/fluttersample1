@@ -10,6 +10,7 @@ class AppColors {
 
 final ThemeData lightTheme = ThemeData(
   useMaterial3: true,
+  //fontFamily: 'Great Vibes',
   colorScheme: const ColorScheme.light(
     primary: AppColors.primaryPurple,
     onPrimary: Colors.white,
@@ -30,4 +31,6 @@ final ThemeData lightTheme = ThemeData(
   //         horizontal: 25, vertical: 14),
   //   ),
   // ),
+
+
 );
