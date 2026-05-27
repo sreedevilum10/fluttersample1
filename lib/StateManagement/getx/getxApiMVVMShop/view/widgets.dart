@@ -31,7 +31,8 @@ class ProductImage extends StatelessWidget {
         return _loading(context, height);
       },
       // ── Error state: show icon placeholder ────────────────────────────
-      errorBuilder: (ctx, error, stack) => _placeholder(context),
+      errorBuilder: (ctx, error, stack) =>
+          _placeholder(context),
     );
   }
 
@@ -58,30 +59,34 @@ class ProductImage extends StatelessWidget {
       height: height,
       width: double.infinity,
       color: Colors.grey.shade100,
-      child: Icon(Icons.image_outlined, size: 40, color: Colors.grey.shade400),
+      child: Icon(Icons.image_outlined,
+          size: 40, color: Colors.grey.shade400),
     );
   }
 }
-
 // ── RatingStars ─────────────────────────────────────────────────────────────
 class RatingStars extends StatelessWidget {
   final double rating;
   final int reviewCount;
 
-  const RatingStars({super.key, required this.rating, this.reviewCount = 0});
+  const RatingStars({super.key,
+    required this.rating, this.reviewCount = 0});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Icon(Icons.star_rounded, size: 14, color: Colors.amber.shade600),
+        Icon(Icons.star_rounded, size: 14,
+            color: Colors.amber.shade600),
         const SizedBox(width: 2),
         Text('${rating.toStringAsFixed(1)}',
-            style: TextStyle(fontSize: 12, color: Colors.grey.shade600)),
+            style: TextStyle(fontSize: 12,
+                color: Colors.grey.shade600)),
         if (reviewCount > 0)
           Text(' ($reviewCount)',
-              style: TextStyle(fontSize: 11, color: Colors.grey.shade500)),
+              style: TextStyle(fontSize: 11,
+                  color: Colors.grey.shade500)),
       ],
     );
   }
