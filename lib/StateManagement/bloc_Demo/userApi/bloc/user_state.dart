@@ -4,7 +4,7 @@
 // should look like at a given moment.
 // ============================================================
 import 'package:equatable/equatable.dart';
-import '../model/user_model.dart';
+import 'package:fluttersample1/StateManagement/bloc_Demo/userApi/model/user_model.dart';
 
 abstract class UserState extends Equatable {
   const UserState();

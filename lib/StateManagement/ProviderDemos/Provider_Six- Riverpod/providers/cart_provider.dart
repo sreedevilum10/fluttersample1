@@ -3,6 +3,7 @@ import 'package:fluttersample1/StateManagement/ProviderDemos/Provider_Six-%20Riv
 
 class CartNotifier extends StateNotifier<List<ProductModel>> {
   CartNotifier() : super([]);
+
   void addToCart(ProductModel product) {
     state = [...state, product];// ...state = it copies old items
   }

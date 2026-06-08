@@ -8,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'service/api_service.dart';
 import 'repository/user_repository.dart';
-import 'bloc/user_bloc.dart';
+import 'bloc/users_bloc.dart';
 import 'bloc/user_event.dart';
 import 'view/user_screen.dart';
 
@@ -38,3 +38,14 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+/* app start
+      ->  blocprovider create userbloc
+      -> userbloc receive repo
+      -> repo receive Services
+      -> call fetchuser
+      -> bloc call repo
+      -> repo call apiservice
+      -> data return
+      -> state update
+      -> ui rebuild
+ */

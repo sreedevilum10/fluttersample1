@@ -406,7 +406,7 @@ class QuizHomeScreen extends StatelessWidget {
         question: 'What is the purpose of Scaffold?',
         options: [
           'Provides Material design layout',
-          'Creates a new screen',
+          'Creates a new view',
           'Manages state',
           'All of above',
         ],

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/auth_provider.dart';
-
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
-
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
@@ -43,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 labelText: 'Your Name',
                 border: OutlineInputBorder(),
               ),
-              onSubmitted: (_) => _login(),
+              onSubmitted: (name) => _login(),
             ),
             const SizedBox(height: 20),
             SizedBox(

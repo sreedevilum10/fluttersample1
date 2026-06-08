@@ -24,12 +24,14 @@ class MyApp extends StatelessWidget {
       ],
       // Consumer<ThemeProvider> allows MaterialApp to react to theme changes.
       child: Consumer<ThemeProvider>(
-        builder: (context, theme, widget) => MaterialApp(
+        builder: (context, theme, widget) =>
+            MaterialApp(
           title: 'Session 3 – Multi-Provider',
           debugShowCheckedModeBanner: false,
           themeMode: theme.themeMode,
           theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
+            colorScheme: ColorScheme.fromSeed(
+                seedColor: Colors.teal),
             useMaterial3: true,
           ),
           darkTheme: ThemeData(

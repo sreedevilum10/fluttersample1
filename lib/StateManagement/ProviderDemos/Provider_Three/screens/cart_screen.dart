@@ -8,7 +8,7 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Accessing MULTIPLE providers in one screen
+    // Accessing MULTIPLE providers in one view
     final auth = context.watch<AuthProvider>();
     final cart = context.watch<CartProvider>();
 
@@ -18,7 +18,8 @@ class CartScreen extends StatelessWidget {
         actions: [
           if (!cart.isEmpty)
             TextButton(
-              onPressed: () => context.read<CartProvider>().clearCart(),
+              onPressed: () =>
+                  context.read<CartProvider>().clearCart(),
               child: const Text('Clear All',
                   style: TextStyle(color: Colors.red)),
             ),
@@ -33,7 +34,9 @@ class CartScreen extends StatelessWidget {
                       size: 64, color: Colors.grey),
                   SizedBox(height: 12),
                   Text('Your cart is empty',
-                      style: TextStyle(fontSize: 18, color: Colors.grey)),
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.grey)),
                 ],
               ),
             )
@@ -45,26 +48,34 @@ class CartScreen extends StatelessWidget {
                     children: cart.items.values.map((item) {
                       return ListTile(
                         title: Text(item.name),
-                        subtitle: Text('\$${item.price.toStringAsFixed(2)} each'),
+                        subtitle: Text(
+                            '\$${item.price.toStringAsFixed(2)} each'),
                         trailing: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             IconButton(
-                              icon: const Icon(Icons.remove_circle_outline),
+                              icon: const Icon(
+                                  Icons.remove_circle_outline),
                               onPressed: () => context
                                   .read<CartProvider>()
                                   .decreaseQuantity(item.id),
                             ),
                             Text('${item.quantity}',
-                                style: const TextStyle(fontSize: 16)),
+                                style: const TextStyle(
+                                    fontSize: 16)),
                             IconButton(
-                              icon: const Icon(Icons.add_circle_outline),
+                              icon: const Icon(
+                                  Icons.add_circle_outline),
                               onPressed: () => context
                                   .read<CartProvider>()
-                                  .addItem(item.id, item.name, item.price),
+                                  .addItem(
+                                  item.id,
+                                  item.name,
+                                  item.price),
                             ),
                             IconButton(
-                              icon: const Icon(Icons.delete_outline,
+                              icon: const Icon(
+                                  Icons.delete_outline,
                                   color: Colors.red),
                               onPressed: () => context
                                   .read<CartProvider>()
@@ -93,15 +104,17 @@ class CartScreen extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Text(
-                          'Total: \$${cart.totalPrice.toStringAsFixed(2)}',
+                          'Total: \$${cart
+                              .totalPrice.toStringAsFixed(2)}',
                           style: const TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
                         ),
                       ),
                       ElevatedButton(
                         onPressed: () {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
                                 content: Text('Order placed! (demo)')),
                           );
                           context.read<CartProvider>().clearCart();

@@ -20,7 +20,7 @@ class _GreenLoginPageState extends State<GreenLoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false, // ✅ smoother keyboard behavior
-      body: SizedBox.expand( // ✅ full screen
+      body: SizedBox.expand( // ✅ full view
         child: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(

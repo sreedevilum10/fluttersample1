@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 // Import TodoBloc class.
 import 'package:fluttersample1/StateManagement/bloc_Demo/simpleTodo/bloc/todo_bloc.dart';
-// Import TodoScreen UI.
 import 'package:fluttersample1/StateManagement/bloc_Demo/simpleTodo/view/todo_screen.dart';
+// Import TodoScreen UI.
 
 // Application starting point.
 //
