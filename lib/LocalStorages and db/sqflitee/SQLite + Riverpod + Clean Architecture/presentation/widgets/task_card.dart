@@ -48,8 +48,12 @@ class TaskCard extends StatelessWidget {
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                       decoration:
-                          task.isCompleted ? TextDecoration.lineThrough : null,
-                      color: task.isCompleted ? Colors.grey : Colors.black,
+                          task.isCompleted
+                              ? TextDecoration.lineThrough
+                              : null,
+                      color: task.isCompleted
+                          ? Colors.grey
+                          : Colors.black,
                     ),
                   ),
                   const SizedBox(height: 4),
@@ -79,13 +83,16 @@ class TaskCard extends StatelessWidget {
                       // DATE
                       Text(
                         task.dueDateFormatted,
-                        style: const TextStyle(fontSize: 10, color: Colors.grey),
+                        style: const TextStyle(
+                            fontSize: 10, color: Colors.grey),
                       ),
 
                       // OVERDUE WARNING
                       if (task.isOverdue) ...[
                         const SizedBox(width: 4),
-                        const Icon(Icons.warning, size: 14, color: Colors.orange),
+                        const Icon(
+                            Icons.warning,
+                            size: 14, color: Colors.orange),
                       ],
                     ],
                   ),

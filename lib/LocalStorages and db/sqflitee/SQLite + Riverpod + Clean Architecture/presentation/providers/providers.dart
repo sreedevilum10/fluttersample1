@@ -1,7 +1,6 @@
 // lib/presentation/providers/providers.dart
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_riverpod/legacy.dart';
 import '../../data/datasources/task_local_datasource.dart';
 import '../../data/repositories/task_repository_impl.dart';
 import '../../domain/entities/task.dart';
@@ -11,7 +10,6 @@ import '../../domain/usecases/task_usecases.dart';
 // ═══════════════════════════════════════════════════════════════
 // DATASOURCE & REPOSITORY PROVIDERS
 // ═══════════════════════════════════════════════════════════════
-
 final taskLocalDataSourceProvider = Provider((ref) {
   return TaskLocalDataSource();
 });
@@ -24,7 +22,6 @@ final taskRepositoryProvider = Provider<TaskRepository>((ref) {
 // ═══════════════════════════════════════════════════════════════
 // USE CASE PROVIDERS
 // ═══════════════════════════════════════════════════════════════
-
 final getAllTasksUseCaseProvider = Provider((ref) {
   final repository = ref.watch(taskRepositoryProvider);
   return GetAllTasksUseCase(repository);
@@ -61,16 +58,13 @@ final searchQueryProvider = StateProvider<String>((ref) => '');
 // ═══════════════════════════════════════════════════════════════
 // TASKS LIST PROVIDER
 // ═══════════════════════════════════════════════════════════════
-
 final tasksProvider = FutureProvider<List<Task>>((ref) async {
   final useCase = ref.watch(getAllTasksUseCaseProvider);
   return await useCase.call();
 });
-
 // ═══════════════════════════════════════════════════════════════
 // FILTERED TASKS PROVIDER (DERIVED STATE)
 // ═══════════════════════════════════════════════════════════════
-
 final filteredTasksProvider = Provider<List<Task>>((ref) {
   final tasksAsyncValue = ref.watch(tasksProvider);
   final statusFilter = ref.watch(statusFilterProvider);
@@ -80,43 +74,39 @@ final filteredTasksProvider = Provider<List<Task>>((ref) {
   return tasksAsyncValue.when(
     data: (tasks) {
       List<Task> filtered = tasks;
-
       // Filter by status
       if (statusFilter == 'pending') {
-        filtered = filtered.where((t) => !t.isCompleted).toList();
+        filtered = filtered.where((t) =>
+        !t.isCompleted).toList();
       } else if (statusFilter == 'done') {
-        filtered = filtered.where((t) => t.isCompleted).toList();
+        filtered = filtered.where((t) =>
+        t.isCompleted).toList();
       }
-
       // Filter by category
       if (categoryFilter != 'All') {
-        filtered = filtered.where((t) => t.category == categoryFilter).toList();
+        filtered = filtered.where((t) =>
+        t.category == categoryFilter).toList();
       }
 
       // Search
       if (searchQuery.isNotEmpty) {
         final query = searchQuery.toLowerCase();
-        filtered = filtered
-            .where((t) =>
+        filtered = filtered.where((t) =>
         t.title.toLowerCase().contains(query) ||
             t.description.toLowerCase().contains(query))
             .toList();
       }
-
-      // Sort by due date
+      // Sort by due date Latest task first
       filtered.sort((a, b) => a.dueDate.compareTo(b.dueDate));
-
       return filtered;
     },
     loading: () => [],
     error: (_, __) => [],
   );
 });
-
 // ═══════════════════════════════════════════════════════════════
 // STATISTICS PROVIDERS (COMPUTED) - ✅ FIXED .valueOrNull → .when()
 // ═══════════════════════════════════════════════════════════════
-
 final totalTasksProvider = Provider<int>((ref) {
   final tasksAsync = ref.watch(tasksProvider);
   return tasksAsync.when(
@@ -129,7 +119,8 @@ final totalTasksProvider = Provider<int>((ref) {
 final pendingTasksProvider = Provider<int>((ref) {
   final tasksAsync = ref.watch(tasksProvider);
   return tasksAsync.when(
-    data: (tasks) => tasks.where((t) => !t.isCompleted).length,
+    data: (tasks) => tasks.where((t) =>
+                !t.isCompleted).length,
     loading: () => 0,
     error: (_, __) => 0,
   );
@@ -143,18 +134,17 @@ final completedTasksProvider = Provider<int>((ref) {
     error: (_, __) => 0,
   );
 });
-
 // ═══════════════════════════════════════════════════════════════
 // CATEGORIES PROVIDER (DERIVED) - ✅ FIXED .valueOrNull → .when()
 // ═══════════════════════════════════════════════════════════════
-
 final categoriesProvider = Provider<List<String>>((ref) {
   final tasksAsync = ref.watch(tasksProvider);
   return tasksAsync.when(
     data: (tasks) {
+      // filter or extract category from task
       final categories = tasks.map((t) => t.category).toSet().toList();
       categories.insert(0, 'All');
-      return categories;
+      return categories;// [All, Personal , work , etc]
     },
     loading: () => ['All'],
     error: (_, __) => ['All'],
@@ -165,21 +155,24 @@ final categoriesProvider = Provider<List<String>>((ref) {
 // ACTION PROVIDERS (MUTATIONS)
 // ═══════════════════════════════════════════════════════════════
 
-final addTaskProvider = FutureProvider.family<void, Task>((ref, task) async {
+final addTaskProvider =
+  FutureProvider.family<void, Task>((ref, task) async {
   final useCase = ref.watch(addTaskUseCaseProvider);
   await useCase.call(task);
   // Refresh tasks list after adding
   ref.refresh(tasksProvider);
 });
 
-final updateTaskProvider = FutureProvider.family<void, Task>((ref, task) async {
+final updateTaskProvider =
+  FutureProvider.family<void, Task>((ref, task) async {
   final useCase = ref.watch(updateTaskUseCaseProvider);
   await useCase.call(task);
   // Refresh tasks list after updating
   ref.refresh(tasksProvider);
 });
 
-final deleteTaskProvider = FutureProvider.family<void, String>((ref, id) async {
+final deleteTaskProvider =
+FutureProvider.family<void, String>((ref, id) async {
   final useCase = ref.watch(deleteTaskUseCaseProvider);
   await useCase.call(id);
   // Refresh tasks list after deleting

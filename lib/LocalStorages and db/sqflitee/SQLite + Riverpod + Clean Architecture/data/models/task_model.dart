@@ -42,7 +42,6 @@ class TaskModel extends Task {
       'createdAt': createdAt.toIso8601String(),
     };
   }
-
   // Convert entity to model
   factory TaskModel.fromEntity(Task task) {
     return TaskModel(

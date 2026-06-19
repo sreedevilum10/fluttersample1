@@ -1,7 +1,6 @@
 // lib/domain/entities/task.dart
 
 import 'package:flutter/material.dart';
-
 /// Task entity - Pure business logic model (no dependencies)
 class Task {
   final String id;
@@ -48,7 +47,8 @@ class Task {
   }
 
   // Helpers for UI
-  String get priorityLabel => priority[0].toUpperCase() + priority.substring(1);
+  String get priorityLabel =>
+      priority[0].toUpperCase() + priority.substring(1);
 
   Color get priorityColor {
     switch (priority) {
@@ -62,8 +62,9 @@ class Task {
         return Colors.grey;
     }
   }
+  bool get isOverdue =>
+      !isCompleted && dueDate.isBefore(DateTime.now());
 
-  bool get isOverdue => !isCompleted && dueDate.isBefore(DateTime.now());
-
-  String get dueDateFormatted => "${dueDate.toLocal()}".split(' ')[0];
+  String get dueDateFormatted =>
+      "${dueDate.toLocal()}".split(' ')[0];
 }

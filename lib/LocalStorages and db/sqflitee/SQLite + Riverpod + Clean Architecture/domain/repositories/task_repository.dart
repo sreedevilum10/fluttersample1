@@ -17,6 +17,6 @@ abstract class TaskRepository {
   // Delete
   Future<void> deleteTask(String id);
 
-  // Stream
+  //=================== Stream continuously monitor task changes ==================
   Stream<List<Task>> watchAllTasks();
 }

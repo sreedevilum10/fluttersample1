@@ -8,7 +8,6 @@ import '../models/task_model.dart';
 /// Repository implementation - bridges domain and data
 class TaskRepositoryImpl implements TaskRepository {
   final TaskLocalDataSource localDataSource;
-
   TaskRepositoryImpl(this.localDataSource);
 
   @override
@@ -46,7 +45,8 @@ class TaskRepositoryImpl implements TaskRepository {
     while (true) {
       final tasks = await getAllTasks();
       yield tasks;
-      await Future.delayed(const Duration(milliseconds: 500));
+      await Future.delayed(const Duration(
+          milliseconds: 500));
     }
   }
 }
