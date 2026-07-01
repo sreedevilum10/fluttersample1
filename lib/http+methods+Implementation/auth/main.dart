@@ -88,7 +88,6 @@ class MyApp extends StatelessWidget {
       },
     );
   }
-
   // ========================================================================
   // INITIALIZATION METHOD
   // ========================================================================
@@ -96,7 +95,6 @@ class MyApp extends StatelessWidget {
   Future<void> _initializeApp() async {
     // Get the AuthController
     final authController = Get.find<AuthController>();
-
     // Check if user is already authenticated
     await authController.checkAuthenticationStatus();
   }
