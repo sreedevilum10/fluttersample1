@@ -258,16 +258,12 @@ class ProductViewModel extends ChangeNotifier {
       if (index != -1) {
         _products[index] = result;
       }
-
       // Sort the list
       _products.sort((a, b) => a.name.compareTo(b.name));
-
       // Clear selected product
       _selectedProduct = null;
-
       // Notify listeners
       notifyListeners();
-
       return true;
     } catch (e) {
       // Handle error

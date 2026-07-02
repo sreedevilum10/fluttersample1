@@ -236,7 +236,6 @@ class ProductService {
       final url = Uri.parse('$baseUrl/product-update/$id/');
 
       print('📍 Updating product at: $url');
-
       // Convert product to JSON (exclude id and image)
       final productJson = product.toJson();
       print('📝 Updated data: $productJson');
@@ -245,8 +244,7 @@ class ProductService {
       final headers = _getHeaders();
 
       // Make the PUT request
-      final response = await http
-          .put(
+      final response = await http.put(
             url,
             headers: headers,
             body: jsonEncode(productJson),
@@ -315,12 +313,10 @@ class ProductService {
       }
 
       // Make the DELETE request
-      final response = await http
-          .delete(
+      final response = await http.delete(
             url,
             headers: headers,
-          )
-          .timeout(timeoutDuration);
+          ).timeout(timeoutDuration);
 
       print('📊 Response Status: ${response.statusCode}');
 
